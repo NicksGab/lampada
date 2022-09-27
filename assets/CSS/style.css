@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background: rgb(0, 0, 100);
+}
+
+/*
+===============================
+            lampada
+===============================
+*/
+
+#lamp {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.lamp-top {
+  position: absolute;
+  width: 15px;
+  height: 100px;
+  background: #151515;
+  pointer-events: none;
+}
+
+.lamp-top::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 110px;
+  background: black;
+  pointer-events: none;
+  transform: translateX(4px);
+  filter: blur(3px);
+}
+
+.lamp-middle {
+  position: absolute;
+  top: 100px;
+  width: 50px;
+  height: 20px;
+  border-radius: 50px 50px 0 0;
+  background: #151515;
+  pointer-events: none;
+}
+
+.lamp-middle::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  transform: translateX(5px);
+  border-radius: 50px 50px 0 0;
+  background: black;
+  pointer-events: none;
+  filter: blur(3px);
+}
+
+.lamp-bottom {
+  position: absolute;
+  top: 120px;
+  width: 150px;
+  height: 60px;
+  border-radius: 50px 50px 0 0;
+  background: #151515;
+  pointer-events: none;
+}
+
+.lamp-bottom::after {
+  content: '';
+  position: absolute;
+  width: 130px;
+  height: 60px;
+  border-radius: 50px 50px 0 0;
+  background: black;
+  pointer-events: none;
+  transform: translateX(10px);
+  filter: blur(5px);
+}
+
+.lamp-light.on {
+  position: absolute;
+  width: 720px;
+  height: 500px;
+  background: linear-gradient(#fff, transparent);
+  clip-path: polygon(
+    40% 0, 60% 0, 80% 100%, 20% 100%   /* Copiado da internet */
+  );
+  top: 180px;
+  pointer-events: none;
+  animation: ascendendo .2s;
+}
+
+@keyframes ascendendo {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.lamp-light.off {
+  display: none;
+}
+
+/*
+===============================
+          cordinha
+===============================
+*/
+
+#cordinha {
+  position: absolute;
+  left: 300px;
+  width: 8px;
+  height: 450px;
+  border: dotted black;
+  background: transparent;
+  transition: .3s;
+}
+  
+#cordinha::after {
+  content: '';
+  position: absolute;
+  top: 450px;
+  left: -9px;
+  background: radial-gradient(black, black, #151515 90%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+#cordinha.on {
+  top: 0px;
+}
+
+#cordinha.off {
+  top: -50px;
+}
